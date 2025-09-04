@@ -55,11 +55,19 @@ a {
   .container, .background-container {
    width: 1170px;
   }
+
+  .background-container img:first-of-type {
+    width: 750px;
+  }
 }
 
 @media (min-width: 1500px) {
   .background-container {
    width: 1440px;
+
+   img:first-of-type {
+      width: initial;
+   }
   } 
   .container {
     padding-inline: 0;
@@ -100,7 +108,7 @@ a {
     rgba(228,119,246,1) 90%,
     rgba(228,119,246,0.45) 95%,
     rgba(228,119,246,0) 60%);
-  filter: blur(400px);
+  filter: blur(200px);
   opacity: 1;
 }
 
@@ -112,10 +120,10 @@ a {
   left: 1083px;
   /* color #9E77F6 → rgba(158,119,246,1) */
   background: radial-gradient(circle at 50% 50%,
-    rgba(158,119,246,1) 0%,
+    rgba(158,119,246,1) 40%,
     rgba(158,119,246,0.45) 95%,
     rgba(158,119,246,0) 60%);
-  filter: blur(400px);
+  filter: blur(230px);
   opacity: 1;
 }
 
