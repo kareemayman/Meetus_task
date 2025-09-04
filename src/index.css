@@ -196,6 +196,7 @@ a {
         background-color: hsla(100, 100%, 100%, 0.4);
         border: 1px solid white;
         transition: var(--main-transition);
+        overflow: hidden;
 
         .font-awesome-icon {
           padding: 16px;
