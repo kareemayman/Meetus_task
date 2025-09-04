@@ -27,7 +27,7 @@ a {
 
 .container {
   margin-inline: auto;
-  padding-inline: 15px;
+  padding-inline: 30px;
 }
 
 .background-container {
@@ -148,8 +148,10 @@ a {
   align-items: center;
   justify-content: space-between;
   padding-top: 65px;
+  position: relative;
 
   form {
+    z-index: 2;
     max-width: 381px;
 
     .welcome {
@@ -190,6 +192,7 @@ a {
 
         .font-awesome-icon {
           padding: 16px;
+          padding-right: 0;
           background-color: hsla(100, 100%, 100%, 0.4);
           font-size: 1.1em;
         }
@@ -253,18 +256,57 @@ a {
   }
 
   .logo {
-    position: relative;
 
     img {
       position: absolute;
-      top: -513px;
-      left: -700px;
+      top: 0;
+      left: 490px;
     }
 
     img:last-of-type {
       position: absolute;
-      top: 150px;
-      left: -530px;
+      top: 660px;
+      left: 657px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .login .container {
+    justify-content: center;
+
+    .logo {
+      img:first-of-type {
+        top: 100px;
+        opacity: 0.2;
+      }
+      img:last-of-type {
+        top: 80%;
+      }
+
+      img {
+        left: 50% !important;
+        transform: translateX(-50%);
+      }
+    }
+
+    form {
+      max-width: 100%;
+    }
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 768px) {
+  .login .container {
+    padding-top: 0;
+
+    .logo img {
+      width: 50%;
+
+      &:last-of-type {
+        top: 91%;
+      }
     }
   }
 }

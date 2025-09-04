@@ -56,6 +56,7 @@ export default function Login() {
 
             <p className="signup-link">Don't have an account? <a href="#">Sign Up</a></p>
           </form>
+
           <div className="logo">
             <img src={meetus} alt="meetus" />
             <img src={logo} alt="logo" />
