@@ -16,6 +16,12 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-bg">
+      {/* Colorful Blobs Inspired by Login */}
+      <div className="dashboard-blob db1"></div>
+      <div className="dashboard-blob db2"></div>
+      <div className="dashboard-blob db3"></div>
+      <div className="dashboard-blob db4"></div>
+
       <div className="dashboard-card">
         <header className="dashboard-header">
           <h2 className="dashboard-title">
@@ -25,6 +31,7 @@ export default function Dashboard() {
             Logout
           </button>
         </header>
+        <h1 className="dashboard-main-title">Dashboard</h1>
         <div className="dashboard-info">
           <div><span className="dashboard-label">Email:</span> {user?.email}</div>
           <div><span className="dashboard-label">Status:</span> {user?.status}</div>
