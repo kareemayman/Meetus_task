@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
-import FormInput from "../components/FormInput"
+import FormInput from "../../components/FormInput.jsx"
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
-import logo from "../assets/images/logo.png"
-import meetus from "../assets/images/meetus.png"
+import logo from "../../assets/images/logo.png"
+import meetus from "../../assets/images/meetus.png"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { login } from "../store/slices/authSlice"
-import { emailValid } from "../util/validation"
+import { login } from "../../store/slices/authSlice"
+import { emailValid } from "../../util/validation"
 import toast from "react-hot-toast"
+import "./Login.css"
 
 export default function Login() {
   // Input States
@@ -39,7 +40,7 @@ export default function Login() {
 
   // Function To Print Error Toast when Email or Password is Incorrect
   const printErrorToast = () => {
-    if (email.trim() === "" ) {
+    if (email.trim() === "") {
       toast.error("Email is required")
       return true
     }
@@ -56,7 +57,7 @@ export default function Login() {
   // Function To Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if(printErrorToast()) return
+    if (printErrorToast()) return
     try {
       await dispatch(login({ email, password, isEmployee: true })).unwrap()
       // success -> go to dashboard

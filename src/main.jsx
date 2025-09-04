@@ -3,12 +3,13 @@ import { Provider, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { fetchCurrentUser } from "./store/slices/authSlice.js"
 import store from "./store/index.js"
-import "./index.css"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import Login from "./pages/Login.jsx"
+import Login from "./pages/Login/Login.jsx"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
-import Dashboard from "./pages/Dashboard.jsx"
+import Dashboard from "./pages/Dashboard/Dashboard.jsx"
 import { Toaster } from "react-hot-toast"
+import "./index.css"
+import "./media.css"
 
 function AppInit({ children }) {
   const dispatch = useDispatch()
