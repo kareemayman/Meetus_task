@@ -2,7 +2,7 @@
 .login .background-container {
   position: relative;
   background: #e9ecf2; /* base background color */
-  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
   border-radius: 20px;
   border: 2.5px solid white;
@@ -91,7 +91,7 @@
 }
 
 .login .container {
-  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -143,6 +143,9 @@
           padding-right: 0;
           background-color: hsla(100, 100%, 100%, 0.4);
           font-size: 1.1em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         input {

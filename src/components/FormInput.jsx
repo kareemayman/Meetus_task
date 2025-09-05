@@ -1,10 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 export default function FormInput({ placeholder, type, name, value, onChange, icon }) {
   return (
     <div className="form-input">
       <div className="font-awesome-icon">
-        <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
+        {/* <FontAwesomeIcon icon={icon}></FontAwesomeIcon> */}
+        <img src={icon} alt={name} />
       </div>
       <input
         placeholder={placeholder}

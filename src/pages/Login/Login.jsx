@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react"
 import FormInput from "../../components/FormInput.jsx"
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
-import { faLock } from "@fortawesome/free-solid-svg-icons"
 import logo from "../../assets/images/logo.png"
 import meetus from "../../assets/images/meetus.png"
 import { useDispatch, useSelector } from "react-redux"
@@ -10,6 +8,8 @@ import { login } from "../../store/slices/authSlice"
 import { emailValid } from "../../util/validation"
 import toast from "react-hot-toast"
 import "./Login.css"
+import sms from "../../assets/images/sms.png"
+import lock from "../../assets/images/lock.png"
 
 export default function Login() {
   // Input States
@@ -91,7 +91,7 @@ export default function Login() {
                 placeholder={"Email"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                icon={faEnvelope}
+                icon={sms}
               ></FormInput>
 
               <FormInput
@@ -100,7 +100,7 @@ export default function Login() {
                 placeholder={"Password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                icon={faLock}
+                icon={lock}
               ></FormInput>
             </div>
 
