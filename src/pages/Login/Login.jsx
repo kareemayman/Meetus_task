@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import FormInput from "../../components/FormInput.jsx"
 import logo from "../../assets/images/logo.png"
-import meetus from "../../assets/images/meetus.png"
+import meetus from "../../assets/images/meetus-cropped.png"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { login } from "../../store/slices/authSlice"
