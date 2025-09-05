@@ -146,6 +146,11 @@
           display: flex;
           justify-content: center;
           align-items: center;
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
         }
 
         input {
