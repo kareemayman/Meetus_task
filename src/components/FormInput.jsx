@@ -1,8 +1,7 @@
-export default function FormInput({ placeholder, type, name, value, onChange, icon }) {
+export default function FormInput({ placeholder, type, name, value, onChange, onBlur, icon, error }) {
   return (
-    <div className="form-input">
+    <div className={`form-input ${error ? "input-error" : ""}`}>
       <div className="font-awesome-icon">
-        {/* <FontAwesomeIcon icon={icon}></FontAwesomeIcon> */}
         <img src={icon} alt={name} />
       </div>
       <input
@@ -11,6 +10,7 @@ export default function FormInput({ placeholder, type, name, value, onChange, ic
         name={name}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
       />
     </div>
   )

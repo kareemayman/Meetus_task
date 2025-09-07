@@ -143,6 +143,14 @@
         transition: var(--main-transition);
         overflow: hidden;
 
+        &.input-error {
+          border: 2px solid #ff4d4f;
+
+          &:hover {
+            box-shadow: none;
+          }
+        }
+
         .font-awesome-icon {
           padding: 16px;
           padding-right: 0;
@@ -232,5 +240,13 @@
         transform: translate(5%, -50%);
       }
     }
+  }
+
+  .error-message {
+    color: #ff4d4f;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
   }
 }

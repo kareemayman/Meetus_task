@@ -17,6 +17,12 @@ export default function Login() {
   const [password, setPassword] = useState("")
   const [disableLoginButton, setDisableLoginButton] = useState(false)
 
+  // error states
+  const [emailError, setEmailError] = useState("")
+  const [passwordError, setPasswordError] = useState("")
+  const [emailTouched, setEmailTouched] = useState(false)
+  const [passwordTouched, setPasswordTouched] = useState(false)
+
   // Redux and Router Hooks
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
@@ -31,6 +37,7 @@ export default function Login() {
 
   // Input Validation & Disabling Login Button
   useEffect(() => {
+    addErrorMessage()
     if (email.trim() === "" || password.trim() === "" || !emailValid(email)) {
       setDisableLoginButton(true)
       return
@@ -38,18 +45,17 @@ export default function Login() {
     setDisableLoginButton(false)
   }, [email, password])
 
-  // Function To Print Error Toast when Email or Password is Incorrect
-  const printErrorToast = () => {
+  function addErrorMessage() {
+    setEmailError("")
+    setPasswordError("")
     if (email.trim() === "") {
-      toast.error("Email is required")
+      setEmailError("Email is required")
       return true
-    }
-    if (!emailValid(email)) {
-      toast.error("Enter a valid email")
+    } else if (!emailValid(email)) {
+      setEmailError("Enter a valid email")
       return true
-    }
-    if (password.trim() === "") {
-      toast.error("Password is required")
+    } else if (password.trim() === "") {
+      setPasswordError("Password is required")
       return true
     }
   }
@@ -57,10 +63,10 @@ export default function Login() {
   // Function To Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (printErrorToast()) return
+    // Don't submit if button is disabled (shouldn't happen, but extra safety)
+    if (disableLoginButton) return
     try {
       await dispatch(login({ email, password, isEmployee: true })).unwrap()
-      // success -> go to dashboard
       navigate("/", { replace: true })
     } catch (err) {
       // error message available in auth.error
@@ -86,28 +92,40 @@ export default function Login() {
 
             <div className="form-group">
               <FormInput
-                name={"email"}
-                type={"email"}
-                placeholder={"Email"}
+                name="email"
+                type="email"
+                placeholder="Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  if (!emailTouched) setEmailTouched(true)
+                }}
+                onBlur={() => setEmailTouched(true)}
                 icon={sms}
-              ></FormInput>
+                error={emailTouched ? emailError : ""} // Only show error after touched
+              />
+              {emailError && emailTouched && <p className="error-message">{emailError}</p>}
 
               <FormInput
-                name={"password"}
-                type={"password"}
-                placeholder={"Password"}
+                name="password"
+                type="password"
+                placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                  if (!passwordTouched) setPasswordTouched(true)
+                }}
+                onBlur={() => setPasswordTouched(true)}
                 icon={lock}
-              ></FormInput>
+                error={passwordTouched ? passwordError : ""} // Only show error after touched
+              />
+              {passwordError && passwordTouched && <p className="error-message">{passwordError}</p>}
             </div>
 
             <button
               type="submit"
               className="login-btn"
-              disabled={auth.status === "loading"}
+              disabled={auth.status === "loading" || disableLoginButton}
               style={{
                 opacity: auth.status === "loading" || disableLoginButton ? 0.3 : 1,
                 cursor: auth.status === "loading" || disableLoginButton ? "not-allowed" : "pointer",
